@@ -47,7 +47,8 @@ async def _league_common(update, bot):
     return await bot.sendPhoto(
         chat_id = chat_id,
         caption = caption,
-        photo = icon
+        photo = icon,
+        parse_mode="Markdown"
     )
 
 Bot.run()
