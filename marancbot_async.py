@@ -6,16 +6,16 @@ import re
 import datetime
 import time
 
-import tokens
-import utils
+from tokens import BOT_TOKEN, LOL_TOKEN
+from utils import *
 
 # Setup
-bot = Bot(BOT_TOKEN)
+bot = Bot.get(BOT_TOKEN)
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.INFO)
 
 # Ping command
-@bot.command('/ping')
-async def ping():
+@bot.command(command='/ping')
+async def ping(update):
     return 'Pong'
 
 # League user command
@@ -28,7 +28,7 @@ async def _league_common(update, bot):
     chat_id = update['chat']['id']
     if(len(text) < 2):
         return dict(
-            text = "Looks up information about a player in EUW.\n\nUsage:\n\n`/league <username>`"
+            text = "Looks up information about a player in EUW.\n\nUsage:\n\n`/league <username>`",
             parse_mode = "Markdown"
         )
 
@@ -44,13 +44,10 @@ async def _league_common(update, bot):
     caption = "👨‍💻 *Username:* " + contents['name'] + "\n🤹‍♂️ *Summoner level:* " + str(contents['summonerLevel'])
     caption += "\n\n💉 *Grado di astinenza:* Non fa uso di LOL da " + league_abstinence +  ".\n🤼 *Match totali:* Ha giocato la bellezza di " + str(match_data['totalGames']) + " partite nella stagione corrente."
 
-    return await bot.send_and_destroy(
+    return await bot.sendPhoto(
         chat_id = chat_id,
-        answer=dict(
-            caption = caption,
-            photo = icon,
-            parse_mode = 'Markdown'
-        )
+        caption = caption,
+        photo = icon
     )
 
 Bot.run()
