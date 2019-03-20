@@ -58,8 +58,8 @@ async def restart_command(update):
     return 'I bot verranno riavviati entro 10 secondi.'
 
 
-while(True):
-    Bot.run()
 
-    if(Bot.stop != 'Restart'):
-        break
+Bot.run()
+
+if(Bot.stop == 'Restart'):
+    sys.exit(65)
