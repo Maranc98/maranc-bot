@@ -17,7 +17,7 @@ logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s
 # Ping command
 @bot.command(command='/ping')
 async def ping(update):
-    return 'Pong'
+    return 'Pongonedeltest'
 
 # Useful bot commands
 @bot.command(command='/restart')
