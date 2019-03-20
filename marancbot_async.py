@@ -34,6 +34,10 @@ async def update_command(update):
 async def league_command(update):
     return await league.league(update, bot)
 
+@bot.command(command='/settoken', descr='Setta il token dell\'API di LOL')
+async def leauge_token(update):
+    return await league.settoken(update, bot)
+
 Bot.run()
 
 # La .get() se non trova Bot.stop, restituisce 60

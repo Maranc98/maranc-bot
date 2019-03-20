@@ -32,3 +32,18 @@ async def league(update, bot):
         photo = icon,
         parse_mode="Markdown"
     )
+
+async def settoken(update, bot):
+    new_token = update['text'].split(' ')
+
+    if(len(new_token) < 2):
+        return "You have to write a token for this to work! .. Or were you trying to take my precious key? 😠"
+
+    new_token = new_token[1]
+    tokens_file = open('tokens.py', 'r+')
+    text = tokens_file.read()
+    text.replace(text[73:115],new_token)
+    text.close()
+    Bot.stop = 'Restart'
+
+    return "You have just set LOL_TOKEN to " + new_token
