@@ -44,8 +44,8 @@ async def settoken(update, bot):
     text = tokens_file.read()
     tokens_file.close()
 
-    text.replace(text[73:115],new_token)
     tokens_file = open('tokens.py', 'w')
+    text = text.replace(text[73:115],new_token)
     tokens_file.write(text)
     tokens_file.close()
 
