@@ -51,4 +51,14 @@ async def _league_common(update, bot):
         parse_mode="Markdown"
     )
 
-Bot.run()
+@bot.command(command='/restart')
+async def restart_command(update):
+    bot.restart_bots()
+    return 'I bot verranno riavviati entro 10 secondi.'
+
+
+while(True):
+    Bot.run()
+
+    if(Bot.stop != 'Restart'):
+        break
