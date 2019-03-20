@@ -16,7 +16,7 @@ logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s
 # Ping command
 @bot.command(command='/ping')
 async def ping(update):
-    return 'Pong'
+    return 'Ponga'
 
 # League user command
 @bot.command(command='/league', descr='Ricerca informazioni su un giocatore.')
@@ -50,5 +50,7 @@ async def _league_common(update, bot):
         photo = icon,
         parse_mode="Markdown"
     )
+
+
 
 Bot.run()
