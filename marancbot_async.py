@@ -57,9 +57,14 @@ async def restart_command(update):
     bot.restart_bots()
     return 'I bot verranno riavviati entro 10 secondi.'
 
-
+@bot.command(command='/update')
+async def update_command(update):
+    Bot.stop = 'Update'
+    return 'Inizio l\'update del bot, brb'
 
 Bot.run()
 
-if(Bot.stop == 'Restart'):
-    sys.exit(65)
+# La .get() se non trova Bot.stop, restituisce 60
+
+EXIT_RESULTS = {'Return' : 65, 'Update' : 66, 'Notfound' : 60}
+sys.exit(EXIT_RESULTS.get(Bot.stop,60))
