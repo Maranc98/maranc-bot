@@ -16,7 +16,7 @@ logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s
 # Ping command
 @bot.command(command='/ping')
 async def ping(update):
-    return 'Ponga'
+    return 'Pong'
 
 # League user command
 @bot.command(command='/league', descr='Ricerca informazioni su un giocatore.')
@@ -51,6 +51,14 @@ async def _league_common(update, bot):
         parse_mode="Markdown"
     )
 
+@bot.command(command='/restart')
+async def restart_command(update):
+    bot.restart_bots()
+    return 'I bot verranno riavviati entro 10 secondi.'
 
 
-Bot.run()
+while(True):
+    Bot.run()
+
+    if(Bot.stop != 'Restart'):
+        break
