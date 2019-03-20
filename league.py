@@ -49,6 +49,4 @@ async def settoken(update, bot):
     tokens_file.write(text)
     tokens_file.close()
 
-    Bot.stop = 'Restart'
-
-    return "You have just set LOL_TOKEN to " + new_token
+    return "You have just set LOL_TOKEN to " + new_token + ". Restart the bot to start using the new token!"
