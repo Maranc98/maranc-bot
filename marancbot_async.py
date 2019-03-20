@@ -14,12 +14,11 @@ import league
 bot = Bot.get(BOT_TOKEN)
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.INFO)
 
-# Ping command
+# Useful bot commands
 @bot.command(command='/ping')
 async def ping(update):
     return 'Pong'
 
-# Useful bot commands
 @bot.command(command='/restart')
 async def restart_command(update):
     bot.restart_bots()
