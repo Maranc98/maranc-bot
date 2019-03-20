@@ -40,10 +40,15 @@ async def settoken(update, bot):
         return "You have to write a token for this to work! .. Or were you trying to take my precious key? 😠"
 
     new_token = new_token[1]
-    tokens_file = open('tokens.py', 'r+')
+    tokens_file = open('tokens.py', 'r')
     text = tokens_file.read()
+    tokens_file.close()
+
     text.replace(text[73:115],new_token)
-    text.close()
+    tokens_file = open('tokens.py', 'w')
+    tokens_file.write(text)
+    tokens_file.close()
+
     Bot.stop = 'Restart'
 
     return "You have just set LOL_TOKEN to " + new_token
