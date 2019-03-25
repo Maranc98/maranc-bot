@@ -15,7 +15,7 @@ async def league(update, bot):
             parse_mode = "Markdown"
         )
 
-    username = text[1]
+    username = ' '.join(str(e) for e in text[1:len(text)])
 
     # League API requests
     contents = requests.get('https://euw1.api.riotgames.com/lol/summoner/v4/summoners/by-name/' + username + '?api_key=' + LOL_TOKEN).json()
