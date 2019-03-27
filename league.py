@@ -85,7 +85,7 @@ async def settoken(update, bot):
        monkas.close()
        return "You have just set LOL_TOKEN to " + new_token + ". Restart the bot to start using the new token!"
 
-    ''' # Since there is not need to change the API key dayly anymore, the functionality has been disabled
+    ''' # Since there is not need to change the API key daily anymore, the functionality has been disabled
 
     tokens_file = open('tokens.py', 'r')
     text = tokens_file.read()
