@@ -12,8 +12,8 @@ async def ms_to_text(ms):
     return text
 
 async def getIP():
-    text = ''
-    for i in ni.interfaces():
-        ip = ni.ifaddresses(i)
-        text += str(ip) + ' - ' + str(i)
-    return text
+    try:
+        ip = ni.ifaddresses('eth0')[ni.AF_INET][0]['addr']
+    except:
+        ip = "Something went wrong."
+    return ip
