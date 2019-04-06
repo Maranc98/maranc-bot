@@ -7,8 +7,8 @@ import datetime
 import time
 import sys
 
-from utils import getIP
 from tokens import BOT_TOKEN
+import utils
 import league
 
 # Setup
@@ -32,7 +32,9 @@ async def update_command(update):
 
 @bot.command(command='/ip')
 async def ip_command(update):
-    return await getIP()
+    if(not utils.isAdmin(update)):
+        return 'Not enough permissions.'
+    return await utils.getIP()
 
 # League
 @bot.command(command='/league', descr='Ricerca informazioni su un giocatore.')

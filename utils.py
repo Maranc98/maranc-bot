@@ -1,5 +1,6 @@
 # For getIP
 import netifaces as ni
+import tokens
 
 async def ms_to_text(ms):
     d = ms // (3600 * 24 * 1000)
@@ -17,3 +18,9 @@ async def getIP():
     except:
         ip = "Something went wrong."
     return ip
+
+async def isAdmin(update):
+    if(str(update['effective_user']['id']) in tokens.admin_ids):
+        return True
+    else:
+        return False
