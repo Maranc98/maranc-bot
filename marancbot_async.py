@@ -7,6 +7,7 @@ import datetime
 import time
 import sys
 
+from utils import getIP
 from tokens import BOT_TOKEN
 import league
 
@@ -28,6 +29,10 @@ async def restart_command(update):
 async def update_command(update):
     Bot.stop = 'Update'
     return 'Inizio l\'update del bot, brb.'
+
+@bot.command(command='/ip')
+async def ip_command(update):
+    return await getIP()
 
 # League
 @bot.command(command='/league', descr='Ricerca informazioni su un giocatore.')
