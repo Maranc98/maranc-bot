@@ -22,11 +22,15 @@ async def ping(update):
 
 @bot.command(command='/restart')
 async def restart_command(update):
+    if(not await utils.isAdmin(update)):
+        return 'Not enough permissions.'
     bot.restart_bots()
     return 'I bot verranno riavviati entro 10 secondi.'
 
 @bot.command(command='/update')
 async def update_command(update):
+    if(not await utils.isAdmin(update)):
+        return 'Not enough permissions.'
     Bot.stop = 'Update'
     return 'Inizio l\'update del bot, brb.'
 
