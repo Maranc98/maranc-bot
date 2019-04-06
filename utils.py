@@ -15,8 +15,5 @@ async def getIP():
     text = ''
     for i in ni.interfaces():
         ip = ni.ifaddresses(i)
-        text += str(ip) + ' - '
-        print(i + '\n')
-        print(ip)
-
+        text += str(ip) + ' - ' + str(i)
     return text
