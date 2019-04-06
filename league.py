@@ -15,7 +15,7 @@ async def league(update, bot):
             parse_mode = "Markdown"
         )
 
-    username = text[1]
+    username = ' '.join(str(e) for e in text[1:len(text)])
 
     # League API requests
     contents = requests.get('https://euw1.api.riotgames.com/lol/summoner/v4/summoners/by-name/' + username + '?api_key=' + LOL_TOKEN).json()
@@ -85,6 +85,8 @@ async def settoken(update, bot):
        monkas.close()
        return "You have just set LOL_TOKEN to " + new_token + ". Restart the bot to start using the new token!"
 
+    ''' # Since there is not need to change the API key daily anymore, the functionality has been disabled
+
     tokens_file = open('tokens.py', 'r')
     text = tokens_file.read()
     tokens_file.close()
@@ -93,5 +95,6 @@ async def settoken(update, bot):
     text = text.replace(text[73:115],new_token)
     tokens_file.write(text)
     tokens_file.close()
-
+    '''
+    
     return "You have just set LOL_TOKEN to " + new_token + ". Restart the bot to start using the new token!"
