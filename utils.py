@@ -20,7 +20,7 @@ async def getIP():
     return ip
 
 async def isAdmin(update):
-    if(str(update['effective_user']['id']) in tokens.admin_ids):
+    if(str(update['from']['id']) in tokens.admin_ids):
         return True
     else:
         return False

@@ -32,7 +32,7 @@ async def update_command(update):
 
 @bot.command(command='/ip')
 async def ip_command(update):
-    if(not utils.isAdmin(update)):
+    if(not await utils.isAdmin(update)):
         return 'Not enough permissions.'
     return await utils.getIP()
 
