@@ -14,10 +14,14 @@ async def ms_to_text(ms):
 
 async def getIP():
     try:
-        ip = ni.ifaddresses('wlan0')[ni.AF_INET][0]['addr']
+        wlan = ni.ifaddresses('wlan0')[ni.AF_INET][0]['addr']
     except:
-        ip = "Something went wrong."
-    return ip
+        wlan = "Something went wrong."
+    try:
+        eth = ni.ifaddresses('eth0')[ni.AF_INET][0]['addr']
+    except:
+        eth = "Something went wrong."
+    return "Ethernet: " + str(eth) + "\nWlan: " + str(wlan)"
 
 async def isAdmin(update):
     if(str(update['from']['id']) in tokens.admin_ids):
