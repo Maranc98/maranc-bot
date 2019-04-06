@@ -14,7 +14,7 @@ async def ms_to_text(ms):
 
 async def getIP():
     try:
-        ip = ni.ifaddresses('eth0')[ni.AF_INET][0]['addr']
+        ip = ni.ifaddresses('wlan0')[ni.AF_INET][0]['addr']
     except:
         ip = "Something went wrong."
     return ip
