@@ -11,9 +11,13 @@ import os
 from tokens import BOT_TOKEN
 import utils
 import league
+import activities
+
+import sqlite3
+db_connection = sqlite3.connect('data/maranc-bot.db'.format(os.path.dirname(__file__)))
 
 # Setup
-bot = Bot.get(BOT_TOKEN, db_name='{}/data/maranc-bot.db'.format(os.path.dirname(__file__)))
+bot = Bot.get(BOT_TOKEN)
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.INFO)
 
 # Useful bot commands
@@ -50,7 +54,16 @@ async def league_command(update):
 async def league_token(update):
     return await league.settoken(update, bot)
 
+# Activities
+@bot.command(command='/act', descr='Aggiungi un\'attività')
+async def activity_command(update):
+    return await activities.add_activity(db_connection, update)
+
 Bot.run()
+
+# Spegnimento Bot
+
+db_connection.close()
 
 # La .get() se non trova Bot.stop, restituisce 60
 

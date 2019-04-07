@@ -2,3 +2,4 @@ tokens.py
 info.txt
 __pycache__/
 config.sh
+data/maranc-bot.db
