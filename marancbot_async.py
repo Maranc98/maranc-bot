@@ -6,13 +6,14 @@ import logging
 import datetime
 import time
 import sys
+import os
 
 from tokens import BOT_TOKEN
 import utils
 import league
 
 # Setup
-bot = Bot.get(BOT_TOKEN)
+bot = Bot.get(BOT_TOKEN, db_name='{}/data/maranc-bot.db'.format(os.path.dirname(__file__)))
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.INFO)
 
 # Useful bot commands
