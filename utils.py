@@ -21,7 +21,7 @@ async def getIP():
         eth = ni.ifaddresses('eth0')[ni.AF_INET][0]['addr']
     except:
         eth = "Something went wrong."
-    return "Ethernet: " + str(eth) + "\nWlan: " + str(wlan)"
+    return "Ethernet: " + str(eth) + "\nWlan: " + str(wlan)
 
 async def isAdmin(update):
     if(str(update['from']['id']) in tokens.admin_ids):
