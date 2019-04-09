@@ -47,7 +47,7 @@ async def add_mood(db_connection, update):
     try:
         db.execute(
             """
-            INSERT INTO Moods (User, MoodName, Timestamp, Notes)
+            INSERT INTO Moods (User, MoodValue, Timestamp, Notes)
             VALUES(?, ?, ?, ?);
             """, (user_id, mood_value, timestamp, notes)
         )
