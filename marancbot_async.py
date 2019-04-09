@@ -59,6 +59,10 @@ async def league_token(update):
 async def activity_command(update):
     return await activities.add_activity(db_connection, update)
 
+@bot.command(command='/mood', descr='Aggiungi un mood')
+async def mood_command(update):
+    return await activities.add_mood(db_connection, update)
+
 Bot.run()
 
 # Spegnimento Bot
