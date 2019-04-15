@@ -63,6 +63,12 @@ async def activity_command(update):
 async def mood_command(update):
     return await activities.add_mood(db_connection, update)
 
+@bot.command(command='/db', descr='Get database')
+async def db_command(update):
+    if(not await utils.isAdmin(update)):
+        return 'Not enough permissions.'
+    return await activities.get_db(update, bot)
+
 Bot.run()
 
 # Spegnimento Bot

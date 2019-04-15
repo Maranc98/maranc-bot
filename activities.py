@@ -55,3 +55,14 @@ async def add_mood(db_connection, update):
     except:
         return 'Insertion failed. :('
     return 'Insetion compelted.'
+
+async def get_db(update, bot):
+    try:
+        with open("data/maranc-bot.db", 'rb') as db:
+            await bot.sendDocument(
+                chat_id = update['from']['id'],
+                document = db
+            )
+    except Exception as e:
+        return dict(text=str("Error:\n\n<code>{}</code>".format(e))[:5000], parse_mode="HTML")
+    return "Here it is!"
