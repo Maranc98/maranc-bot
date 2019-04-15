@@ -1,8 +1,6 @@
 import asyncio
 from davtelepot import Bot
 import logging
-#import requests
-#import re
 import datetime
 import time
 import sys
