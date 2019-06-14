@@ -65,6 +65,8 @@ async def legal_decree(update, bot):
 
     final_image.save('data/pokemon/XD.png')
 
-    return await bot.send_photo(chat_id = update['chat']['id'],
+    photo = await bot.send_photo(chat_id = update['chat']['id'],
                                 photo = open('data/pokemon/XD.png', 'rb'),
                                 caption = "Come dichiarato dal ministro dell'Interno, Junichi Masuda,🙏👼 secondo le indiscrezioni circolate nelle ultime 48 ore ⏰,  il decreto già ribattezzato \"Gotta catch some of them\" 😂😂 ha come principale obiettivo quello di tutelare il lavoro 👨‍🔧👨‍🚒 delle forze dell'ordine impegnate sul territorio di Galar 👮‍♀️, inasprire le pene per il reato di immigrazione clandestina. ⚖️🚨 Questi sono un esempio dei pokemon, 30% del totale 😱, che potrebbero sopravvivere alla strage... 😠😠😔")
+    await bot.sendMessage(chat_id = update['chat']['id'],text = "Come dichiarato dal ministro dell'Interno, Junichi Masuda,🙏👼 secondo le indiscrezioni circolate nelle ultime 48 ore ⏰,  il decreto già ribattezzato \"Gotta catch some of them\" 😂😂 ha come principale obiettivo quello di tutelare il lavoro 👨‍🔧👨‍🚒 delle forze dell'ordine impegnate sul territorio di Galar 👮‍♀️, inasprire le pene per il reato di immigrazione clandestina. ⚖️🚨 Questi sono un esempio dei pokemon, 30% del totale 😱, che potrebbero sopravvivere alla strage... 😠😠😔")
+    return photo
