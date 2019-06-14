@@ -63,4 +63,4 @@ async def legal_decree(update, bot):
 
     final_image.save('data/pokemon/XD.png')
 
-    bot.send_photo(chat_id = update['chat']['id'], photo = open('data/pokemon/XD.png', 'rb'))
+    return await bot.send_photo(chat_id = update['chat']['id'], photo = open('data/pokemon/XD.png', 'rb'))

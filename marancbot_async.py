@@ -71,7 +71,7 @@ async def db_command(update):
 # Pokememe
 @bot.command(command='/feraligator', descr='Simula l\'imminente strage nel mondo dei Pokèmon')
 async def pokememe_command(update):
-    await pokememe.legal_decree(update, bot)
+    return await pokememe.legal_decree(update, bot)
 
 Bot.run()
 
