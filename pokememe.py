@@ -11,11 +11,11 @@ pokemon_survival_rate = 0.3 # Probabilità che una famiglia di pokemon non sia d
 image_width = 40
 image_height = 30
 
-with open('pokemon_list.csv','r') as file:
+with open('data/pokemon/pokemon_list.csv','r') as file:
     for line in file:
         pokemon_list.append(line.strip('\n').split(';'))
 
-with open('evolution_families.csv','r') as file:
+with open('data/pokemon/evolution_families.csv','r') as file:
     for line in file:
         family_string = line.strip('\n').split(';')
         family = []
@@ -47,7 +47,7 @@ def legal_decree(update, bot):
 
     for family in legal_pokemon_families:
         for pokemon in family:
-            paths.append('icons/' + str(int(float(pokemon[0]))) + '.png')
+            paths.append('data/pokemon/icons/' + str(int(float(pokemon[0]))) + '.png')
 
     images = [Image.open(i) for i in paths]
     images_ordered = []
@@ -56,7 +56,7 @@ def legal_decree(update, bot):
         for j in range(6):
             final_image.paste(images[i*6+j],(j*image_width,i*image_height))
 
-    os.remove('XD.png')
-    final_image.save('XD.png')
+    os.remove('data/pokemon/XD.png')
+    final_image.save('data/pokemon/XD.png')
 
     bot.send_photo(chat_id = update['chat']['id'], photo = open('XD.png', 'rb'))
