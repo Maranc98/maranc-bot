@@ -1,6 +1,7 @@
 import random
 import sys
 import os
+import math
 from PIL import Image
 
 pokemon_list = []
@@ -51,7 +52,7 @@ async def legal_decree(update, bot):
 
     images = [Image.open(i) for i in paths]
     images_ordered = []
-    final_image = Image.new('RGBA', (240, 1000), color=(255,255,255))
+    final_image = Image.new('RGBA', (image_width * 6, image_height * math.ceil(len(images)/6)), color=(255,255,255))
     for i in range(int(len(images)/6)):
         for j in range(6):
             final_image.paste(images[i*6+j],(j*image_width,i*image_height))
@@ -63,4 +64,6 @@ async def legal_decree(update, bot):
 
     final_image.save('data/pokemon/XD.png')
 
-    return await bot.send_photo(chat_id = update['chat']['id'], photo = open('data/pokemon/XD.png', 'rb'))
+    return await bot.send_photo(chat_id = update['chat']['id'],
+                                photo = open('data/pokemon/XD.png', 'rb'),
+                                caption = "Hurr durr decreto legge bad")
