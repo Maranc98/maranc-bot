@@ -11,6 +11,7 @@ pokemon_survival_rate = 0.3 # Probabilità che una famiglia di pokemon non sia d
 
 image_width = 40
 image_height = 30
+max_pokemon_per_row = 10
 
 with open('data/pokemon/pokemon_list.csv','r') as file:
     for line in file:
@@ -52,10 +53,10 @@ async def legal_decree(update, bot):
 
     images = [Image.open(i) for i in paths]
     images_ordered = []
-    final_image = Image.new('RGBA', (image_width * 6, image_height * math.ceil(len(images)/6)), color=(255,255,255))
-    for i in range(int(len(images)/6)):
-        for j in range(6):
-            final_image.paste(images[i*6+j],(j*image_width,i*image_height))
+    final_image = Image.new('RGBA', (image_width * max_pokemon_per_row, image_height * math.ceil(len(images)/max_pokemon_per_row)), color=(255,255,255))
+    for i in range(int(len(images)/max_pokemon_per_row)):
+        for j in range(max_pokemon_per_row):
+            final_image.paste(images[i*max_pokemon_per_row+j],(j*image_width,i*image_height))
 
     try:
         os.remove('data/pokemon/XD.png')
