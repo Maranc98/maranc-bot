@@ -60,7 +60,7 @@ def legal_decree(update, bot):
         os.remove('data/pokemon/XD.png')
     except:
         pass
-        
+
     final_image.save('data/pokemon/XD.png')
 
-    bot.send_photo(chat_id = update['chat']['id'], photo = open('XD.png', 'rb'))
+    bot.send_photo(chat_id = update['chat']['id'], photo = open('data/pokemon/XD.png', 'rb'))
