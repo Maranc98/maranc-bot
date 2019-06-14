@@ -39,7 +39,7 @@ def sorting_function(family):
             key = float(pokemon[0])
     return key
 
-def legal_decree(update, bot):
+async def legal_decree(update, bot):
     legal_pokemon_families = random.sample(pokemon_families, number_of_families_allowed)
     legal_pokemon_families = sorted(legal_pokemon_families, key = sorting_function)
 
