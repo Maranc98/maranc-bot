@@ -10,6 +10,7 @@ from tokens import BOT_TOKEN
 import utils
 import league
 import activities
+import pokememe
 
 import sqlite3
 db_connection = sqlite3.connect('data/maranc-bot.db'.format(os.path.dirname(__file__)))
@@ -66,6 +67,11 @@ async def db_command(update):
     if(not await utils.isAdmin(update)):
         return 'Not enough permissions.'
     return await activities.get_db(update, bot)
+
+# Pokememe
+@bot.command(command='/feraligator', descr='Simula l\'imminente strage nel mondo dei Pokèmon')
+async def pokememe_command(update):
+    await pokememe.legal_decree(update, bot)
 
 Bot.run()
 
