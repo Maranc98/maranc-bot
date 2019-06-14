@@ -56,7 +56,11 @@ def legal_decree(update, bot):
         for j in range(6):
             final_image.paste(images[i*6+j],(j*image_width,i*image_height))
 
-    os.remove('data/pokemon/XD.png')
+    try:
+        os.remove('data/pokemon/XD.png')
+    except:
+        pass
+        
     final_image.save('data/pokemon/XD.png')
 
     bot.send_photo(chat_id = update['chat']['id'], photo = open('XD.png', 'rb'))
